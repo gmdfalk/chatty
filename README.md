@@ -11,6 +11,7 @@ Add a `.env` file containing your MS app id and secret:
 
     MICROSOFT_APP_ID=
     MICROSOFT_APP_PASSWORD=
+    PORT=3978
 
 #### Run
 

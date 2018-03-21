@@ -124,15 +124,15 @@ if [[ $validateOnly ]]
 then
     if [[ $uploadArtifacts ]]
     then
-        az group deployment validate -g "$resourceGroupName" --template-uri $templateUri --parameters "$parameterJson" --verbose
+        az group deployment validate -g "$resourceGroupName" --template-uri $templateUri --parameters "$parameterJson" --verbose ${devMode:+--debug}
     else
-        az group deployment validate -g "$resourceGroupName" --template-file $templateFile --parameters "$parameterJson" --verbose
+        az group deployment validate -g "$resourceGroupName" --template-file $templateFile --parameters "$parameterJson" --verbose ${devMode:+--debug}
     fi
 else
     if [[ $uploadArtifacts ]]
     then
-        az group deployment create -g "$resourceGroupName" -n AzureRMSamples --template-uri $templateUri --parameters "$parameterJson" --verbose
+        az group deployment create -g "$resourceGroupName" -n AzureRMSamples --template-uri $templateUri --parameters "$parameterJson" --verbose ${devMode:+--debug}
     else
-        az group deployment create -g "$resourceGroupName" -n AzureRMSamples --template-file $templateFile --parameters "$parameterJson" --verbose
+        az group deployment create -g "$resourceGroupName" -n AzureRMSamples --template-file $templateFile --parameters "$parameterJson" --verbose ${devMode:+--debug}
     fi
 fi

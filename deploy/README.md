@@ -16,11 +16,16 @@ On OSX/Linux you also need to have node, npm, jq and azure-cli installed:
 ### CLI-Setup
 Run `az login` when first using the azure-cli.
 
-## Deployment (to Dev)
+## Deployment
 The deployment scripts are taken from https://github.com/Azure/azure-quickstart-templates.
 ### PowerShell
-    .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation 'westeurope' -ArtifactStagingDirectory 'deploy' -ResourceGroupName 'dvag-chatbot-innendienst' -Dev
+    .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation 'westeurope' -ArtifactStagingDirectory 'deploy' -ResourceGroupName 'dvagChatbotInnendienst' -Dev
 
 ### Bash
-    ./az-group-deploy.sh -a deploy -g dvag-chatbot-innendienst -l westeurope -d
+Validate the dev configuration:
+
+    ./az-group-deploy.sh -a deploy -g dvagChatbotInnendienst -l westeurope -d -v
+Deploy the dev config:
+
+    ./az-group-deploy.sh -a deploy -g dvagChatbotInnendienst -l westeurope -d
 

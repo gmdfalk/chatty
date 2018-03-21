@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "hostingPlanName": {
-      "value": "dvag-chatbot-innendienst"
+      "value": "dvagChatbotInnendienst"
     },
     "repoUrl": {
       "value": "https://i13pccb@bitbucket.dvag.com/scm/~i13pccb/dvag-chatbot-innendienst.git"
@@ -11,13 +11,10 @@
     "repoBranch": {
       "value": "master"
     },
-    "directlineSecret": {
-      "value": ""
-    },
-    "microsoftAppId": {
+    "MICROSOFT_APP_ID": {
       "value": "5dda471e-3fdf-42b0-af40-bb17877d6f58"
     },
-    "microsoftAppPassword": {
+    "MICROSOFT_APP_PASSWORD": {
       "value": ""
     }
   }

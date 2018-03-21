@@ -1,12 +1,24 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "siteName": {
-      "defaultValue": "dvag-chatbot-innendienst",
+      "defaultValue": "dvagChatbotInnendienst",
       "type": "string",
       "metadata": {
         "description": "The name of the web app that you wish to create."
+      }
+    },
+    "storageAccountType": {
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS"
+      ],
+      "type": "string",
+      "metadata": {
+        "description": "Storage Account type"
       }
     },
     "sku": {
@@ -34,15 +46,10 @@
         "description": "The instance size of the hosting plan (small, medium, or large)."
       }
     },
-    "websiteNodeDefaultVersion": {
-      "type": "string",
-      "defaultValue": "6.9.5"
-    },
     "siteLocation": {
       "type": "string",
-      "defaultValue": "westeurope"
+      "defaultValue": "[resourceGroup().location]"
     },
-
     "hostingPlanName": {
       "type": "string",
       "metadata": {
@@ -61,18 +68,20 @@
         "description": "The branch of the GitHub repository to use."
       }
     },
-    "directlineSecret": {
+    "WEBSITE_NODE_DEFAULT_VERSION": {
       "type": "string",
-      "metadata": {
-        "description": "Your bot's direct line secret from http://dev.botframework.com"
-      }
+      "defaultValue": "6.9.5"
     },
-    "microsoftAppId": {
+    "MICROSOFT_APP_ID": {
       "type": "string"
     },
-    "microsoftAppPassword": {
+    "MICROSOFT_APP_PASSWORD": {
       "type": "string"
     }
+  },
+  "variables": {
+    "storageAccountName": "[toLower(concat(substring(replace(parameters('siteName'), '-_.,;:', ''), 0, 20), take(uniquestring(resourceGroup().id, 'storage'), 4)))]",
+    "insightName": "[toLower(concat(substring(replace(parameters('siteName'), '-_.,;:', ''), 0, 20), take(uniquestring(resourceGroup().id, 'insight'), 4)))]"
   },
   "resources": [
     {
@@ -113,16 +122,20 @@
           "properties": {
             "appSettings": [
               {
-                "name": "websiteNodeDefaultVersion",
-                "value": "[parameters('websiteNodeDefaultVersion')]"
+                "name": "Project",
+                "value": "[parameters('siteName')]"
               },
               {
-                "name": "microsoftAppId",
-                "value": "[parameters('microsoftAppId')]"
+                "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                "value": "[parameters('WEBSITE_NODE_DEFAULT_VERSION')]"
               },
               {
-                "name": "microsoftAppPassword",
-                "value": "[parameters('microsoftAppPassword')]"
+                "name": "MICROSOFT_APP_ID",
+                "value": "[parameters('MICROSOFT_APP_ID')]"
+              },
+              {
+                "name": "MICROSOFT_APP_PASSWORD",
+                "value": "[parameters('MICROSOFT_APP_PASSWORD')]"
               }
             ]
           }
@@ -142,6 +155,29 @@
           }
         }
       ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "sku": {
+        "name": "[parameters('storageAccountType')]",
+        "tier": "Standard"
+      },
+      "kind": "Storage",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2016-01-01",
+      "location": "[resourceGroup().location]",
+      "tags": {},
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "apiVersion": "2014-04-01",
+      "name": "[variables('insightName')]",
+      "type": "Microsoft.Insights/components",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "ApplicationId": "[variables('insightName')]"
+      }
     }
   ]
 }
