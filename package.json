@@ -1,13 +1,13 @@
 {
-  "name": "simple-task-automation",
-  "version": "1.0.0",
-  "description": "Bot Build Sample - Simple Task Automation",
+  "name": "dvag-chatbot-innendienst",
+  "version": "0.1.0",
+  "description": "ChatBot für den DVAG-Innendienst",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "dependencies": {
     "botbuilder": "^3.13.1",
     "restify": "^4.3.0",

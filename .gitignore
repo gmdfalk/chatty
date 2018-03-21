@@ -1,4 +1,5 @@
 .env
+#azuredeploy.parameters.dev.json
 
 # Created by https://www.gitignore.io/api/osx,node,windows,intellij
 

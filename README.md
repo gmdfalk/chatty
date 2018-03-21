@@ -17,15 +17,17 @@ Add a `.env` file containing your MS app id and secret:
     npm install
     node app.js
 
+#### Test
+Download and install the [BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
+Then use it to connect to http://localhost:3978.
+
+
 #### Deploy
 
-[![Deploy to Azure][Deploy Button]][Deploy Node/SimpleTaskAutomation]
+[![Deploy to Azure][Deploy Button]][Deploy deploy]
 
 [Deploy Button]: https://azuredeploy.net/deploybutton.png
-[Deploy Node/SimpleTaskAutomation]: https://azuredeploy.net
-
-    brew update && brew install azure-cli
-
+[Deploy deploy]: https://azuredeploy.net
 
 ### Prerequisites
 
