@@ -1,8 +1,5 @@
 # Microsoft Bot Service Azure Deployment
-[![Deploy to Azure][Deploy Button]][Deploy deploy]
-
-[Deploy Button]: https://azuredeploy.net/deploybutton.png
-[Deploy deploy]: https://azuredeploy.net
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
 ## Preparation
 ### Configuration

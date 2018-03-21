@@ -52,6 +52,7 @@
     },
     "hostingPlanName": {
       "type": "string",
+      "defaultValue": "[parameters('siteName')]",
       "metadata": {
         "description": "The name of the App Service plan to use for hosting the web app."
       }
@@ -62,8 +63,9 @@
         "description": "The URL for the GitHub repository that contains the project to deploy."
       }
     },
-    "repoBranch": {
+    "branch": {
       "type": "string",
+      "defaultValue": "master",
       "metadata": {
         "description": "The branch of the GitHub repository to use."
       }
@@ -150,7 +152,7 @@
           ],
           "properties": {
             "RepoUrl": "[parameters('repoUrl')]",
-            "branch": "[parameters('repoBranch')]",
+            "branch": "[parameters('branch')]",
             "IsManualIntegration": true
           }
         }

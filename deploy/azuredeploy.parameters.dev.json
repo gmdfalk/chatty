@@ -7,13 +7,10 @@
     }
   },
   "parameters": {
-    "hostingPlanName": {
-      "value": "dvagChatbotInnendienst"
-    },
     "repoUrl": {
       "value": "https://i13pccb@bitbucket.dvag.com/scm/~i13pccb/dvag-chatbot-innendienst.git"
     },
-    "repoBranch": {
+    "branch": {
       "value": "develop"
     },
     "MICROSOFT_APP_ID": {

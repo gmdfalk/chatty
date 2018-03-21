@@ -1,7 +1,7 @@
 # Simple Task Automation Sample
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
 A sample bot showing how to do simple task automation scenarios.
-
 
 ### Usage
 #### Configure
@@ -22,13 +22,8 @@ Add a `.env` file containing your MS app id and secret:
 Download and install the [BotFramework-Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases).
 Then use it to connect to http://localhost:3978.
 
-
-#### Deploy
-
-[![Deploy to Azure][Deploy Button]][Deploy deploy]
-
-[Deploy Button]: https://azuredeploy.net/deploybutton.png
-[Deploy deploy]: https://azuredeploy.net
+#### Deployment
+See [deployment documentation](deploy/README.md).
 
 ### Prerequisites
 
